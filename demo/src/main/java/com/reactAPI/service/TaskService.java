@@ -10,18 +10,23 @@ import com.reactAPI.domain.repository.TaskRepository;
 
 @Service
 public class TaskService {
-    @Autowired
-    private TaskRepository repository;
 
-    public List<Task> getAllTasks(){
+    private final TaskRepository repository;
+
+    @Autowired
+    public TaskService(TaskRepository repository) {
+        this.repository = repository;
+    }
+
+    public List<Task> getAllTasks() {
         return repository.findAll();
     }
 
-    public Task saveTask(Task task){
+    public Task saveTask(Task task) {
         return repository.save(task);
     }
 
-    public void deleteTask(Long id){
+    public void deleteTask(Long id) {
         repository.deleteById(id);
     }
 }
