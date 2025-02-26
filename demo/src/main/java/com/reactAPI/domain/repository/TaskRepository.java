@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.reactAPI.domain.model.Task;
 
+
 @Repository 
 public interface TaskRepository extends JpaRepository<Task, Long> {
 }

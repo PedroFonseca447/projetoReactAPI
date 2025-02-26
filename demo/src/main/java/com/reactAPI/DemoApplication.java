@@ -1,4 +1,4 @@
-package com.reactAPI.demo;
+package com.reactAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
