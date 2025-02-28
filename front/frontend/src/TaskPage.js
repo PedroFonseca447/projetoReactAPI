@@ -23,6 +23,8 @@ function TaskPage() {
                     onChange={(e) => setNewTask(e.target.value)}
                 />
                 <button className="add-task" onClick={addTask}>Adicionar</button>
+             
+               
             </div>
             <div className="task-list">
                 {tasks.map((task, index) => (

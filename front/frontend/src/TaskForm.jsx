@@ -20,6 +20,7 @@ function TaskForm({refreshTasks}){
             <form onSubmit={handleSubmit}>
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}  placeholder="Nova Tarefa"/>
                 <button type="submit">Adicionar</button> 
+              
             </form>
 
     );
