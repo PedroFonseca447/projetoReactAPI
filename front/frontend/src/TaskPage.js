@@ -4,6 +4,8 @@ import "./TaskPage.css";
 function TaskPage() {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState("");
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [editText, setEditText] = useState("");
 
     const addTask = () => {
         if (newTask.trim() !== "") {
@@ -16,8 +18,14 @@ function TaskPage() {
         setTasks(tasks.map((task, i) => i === index ? { ...task, completed: !task.completed } : task));
     };
 
-    const editTask = (index, newText) => {
-        setTasks(tasks.map((task, i) => i === index ? { ...task, text: newText } : task));
+    const startEditing = (index) => {
+        setEditingIndex(index);
+        setEditText(tasks[index].text);
+    };
+
+    const confirmEdit = (index) => {
+        setTasks(tasks.map((task, i) => i === index ? { ...task, text: editText } : task));
+        setEditingIndex(null);
     };
 
     return (
@@ -35,20 +43,33 @@ function TaskPage() {
             <div className="task-list">
                 {tasks.map((task, index) => (
                     <div key={index} className="task">
-                        <input
-                            type="text"
-                            value={task.text}
-                            onChange={(e) => editTask(index, e.target.value)}
-                        />
-                        <button 
-                            className={task.completed ? "task-incompleted" : "task-completed"} 
-                            onClick={() => toggleTaskStatus(index)}
-                        >
-                            {task.completed ? "Incompleto" : "Completo"}
-                        </button>
-                        <button onClick={() => setTasks(tasks.filter((_, i) => i !== index))}>
-                            X
-                        </button>
+                        {editingIndex === index ? (
+                            <input
+                                type="text"
+                                value={editText}
+                                onChange={(e) => setEditText(e.target.value)}
+                            />
+                        ) : (
+                            <span>{task.text}</span>
+                        )}
+                        {editingIndex !== index && (
+                            <button 
+                                className={task.completed ? "task-completed" : "task-incomplete"} 
+                                onClick={() => toggleTaskStatus(index)}
+                            >
+                                {task.completed ? "Incompleto" : "Completo"}
+                            </button>
+                        )}
+                        {editingIndex === index ? (
+                            <button onClick={() => confirmEdit(index)}>Confirmar</button>
+                        ) : (
+                            <button onClick={() => startEditing(index)}>Editar</button>
+                        )}
+                        {editingIndex !== index && (
+                            <button onClick={() => setTasks(tasks.filter((_, i) => i !== index))}>
+                                X
+                            </button>
+                        )}
                     </div>
                 ))}
             </div>
