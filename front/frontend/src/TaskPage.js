@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaPencilAlt } from "react-icons/fa";
 import "./TaskPage.css";
 
 function TaskPage() {
@@ -50,6 +51,7 @@ function TaskPage() {
                         {editingIndex === index ? (
                             <input
                                 type="text"
+                                
                                 value={editText}
                                 onChange={(e) => setEditText(e.target.value)}
                             />
@@ -65,7 +67,9 @@ function TaskPage() {
                                 >
                                     {task.completed ? "Completo" : "Incompleto"}
                                 </button>
-                                <button type="button" onClick={() => startEditing(index)}>Editar</button>
+                                <button className="edit-btn" onClick={() => startEditing(index)}>
+                                <FaPencilAlt />
+                                    </button>
                                 <button type="button" onClick={() => setTasks(tasks.filter((_, i) => i !== index))}>
                                     X
                                 </button>
