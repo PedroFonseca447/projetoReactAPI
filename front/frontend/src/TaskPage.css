@@ -1,129 +1,97 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    
-    
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
 .container {
-    width: 60%;
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
     text-align: center;
-    margin-left: 350px;
-    margin-top: 100px;
-}
-
-h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
 }
 
 .input-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-input[type="text"] {
-    width: 60%;
-    padding: 15px;
-    font-size: 1.2rem;
-    border: 2px solid #007BFF;
-    border-radius: 20px;
-    text-align: center;
-    outline: none;
+.input-container input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .add-task {
-    padding: 15px 25px;
-    font-size: 1rem;
-    font-weight: bold;
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #007bff;
     color: white;
-    background-color: #28D850;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .add-task:hover {
-    background-color: #22B842;
+    background-color: #0056b3;
 }
 
 .task-list {
-    margin-top: 30px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .task {
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 10px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-
-.task button:not(.task-completed):not(.task-incomplete) {
-    background-color: #FF4C4C; /* Somente para o botão de excluir */
-    color: white;
-    border: none;
+    justify-content: space-between;
+    background: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
-.task button:hover {
-    background-color: #D43F3F;
-}
-
-.task-completed {
-
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+.task input[type="text"] {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.task-incomplete {
-    padding: 10px;
-    background-color: orange;
-    color: white;
+.task button {
+    padding: 8px 12px;
     border: none;
-    padding: 5px 10px;
-    cursor: pointer
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
 }
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        width: 80%;
-        padding: 20px;
-    }
 
-    input[type="text"] {
-        width: 100%;
-    }
 
-    .add-task {
-        width: 100%;
-    }
+.task .task-incomplete {
+    background-color: #dc3545 ; 
+    color: white ;
+    border: 1px solid #b22222;
+}
+
+
+.task .task-completed {
+    background-color: #28a745; 
+    color: white ;
+    border: 1px solid #1e7e34;
+}
+
+/* Hover effect */
+.task .task-incomplete:hover,
+.task .task-completed:hover {
+    opacity: 0.8;
+}
+
+
+.task button:nth-child(3) { /* Botão de editar */
+    background-color: #ffc107;
+    color: black;
+}
+
+.task button:nth-child(4) { /* Botão de remover */
+    background-color: #dc3545;
+    color: white;
 }
