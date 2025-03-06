@@ -111,8 +111,8 @@
 
 
 .task button:nth-child(3) { /* Botão de editar */
-    background-color: #ffc107;
-    color: black;
+    background-color: #dc3545;
+    color: white;
 }
 
 .task button:nth-child(4) { /* Botão de remover */
